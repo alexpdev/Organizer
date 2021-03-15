@@ -1,0 +1,9 @@
+beets==1.4.9
+colorama==0.4.4
+jellyfish==0.8.2
+munkres==1.1.4
+musicbrainzngs==0.7.1
+mutagen==1.45.1
+PyYAML==5.4.1
+six==1.15.0
+Unidecode==1.2.0
