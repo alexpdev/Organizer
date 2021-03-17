@@ -1,6 +1,5 @@
 #! /usr/bin/python3
 # -*- coding: utf-8 -*-
-
 import hashlib
 from pathlib import Path
 from organizer.SqlMixin import SqlMixin, SqlConnection
@@ -9,6 +8,7 @@ from organizer.utils import DB_DIR, DB_FILE
 hashed = lambda x: hashlib.md5(x.read_bytes()).hexdigest()
 
 class Track:
+
     def __init__(self,path):
         self.path = str(path)
         self.obj = Path(path)
@@ -37,10 +37,13 @@ class Track:
 
 
 class Walker(SqlMixin):
+
     headers = ["path","name","suffix","size"]
     track = Track
+
     def __init__(self,dbfile=DB_FILE,table="table"):
         self.dbfile = Path(dbfile)
+
         if not self.dbfile.parent.exists():
             self.dbfile.parent.mkdir()
 
@@ -48,6 +51,7 @@ class Walker(SqlMixin):
         self.txt_file = None
         self.container = []
         self.cursor = SqlConnection(self.dbfile)
+
         self.configure_database()
 
     def get_all(self):
@@ -77,11 +81,6 @@ class Walker(SqlMixin):
         if not self.txt_file:
             self.txt_file = open("IncludeTracks.txt","a",errors="replace")
         self.txt_file.write(item.path + "\n")
-
-    def send_to_gui(self,item):
-        item = Track(item)
-        output = item.format_order()
-
 
     def walk(self,root,action):
         for item in root.iterdir():

@@ -8,15 +8,7 @@ class CentralWidget(Widget):
 
 
     def _selection_made(self,result):
-        print(dir(self))
-        print(self.children())
-        print("SIGNAL SENT")
         for child in self.children():
             if hasattr(child,"ident"):
                 if child.ident == "FileTable":
                     child.addDir(result)
-                    print("FOUND FILE TABLE")
-
-    def addWalker(self,walker):
-        self.walker = walker
-

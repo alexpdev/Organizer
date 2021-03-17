@@ -10,7 +10,6 @@ class DirSelect(ListWidget):
 
     def add_item(self,item):
         item = QListWidgetItem()
-        item.setFlags(Qt.ItemFlags(1))
         self.addItem(item)
         self.items.append(item)
 
